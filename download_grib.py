@@ -82,13 +82,13 @@ else:
 def cal_lcl90(year):
     print('Making lower confidence limit data...')
     _sy =  ((year - 1) // 10 - 3) * 10 + 1
-    #_ey = _sy + 29
-    _ey = _sy + 2 # test用
+    _ey = _sy + 29
     _sUTC = datetime(_sy, 3, 1) - timedelta(hours=30)
     _eUTC = datetime(_ey, 6, 1, 6) 
     _dt = timedelta(hours=6)
 
     while _sUTC <= _eUTC:
+        print(_sUTC)
         _y, _m = _sUTC.year, _sUTC.month
         _dh = _sUTC - (datetime(_y, 3, 1) - timedelta(hours=30))
         _t = int(_dh.total_seconds() / 21600)
