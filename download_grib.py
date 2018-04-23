@@ -154,7 +154,7 @@ while syear <= eyear:
     if 'lcl90' in locals():
         pass
     else:
-        lcl90 = cal_lcl90(y)
+        lcl90 = cal_lcl90(syear)
 
     if syear == eyear or syear % 10 == 0:
         sy = ((syear - 1) // 10 - 3) * 10 + 1 # 使用する気候値の最初の年
