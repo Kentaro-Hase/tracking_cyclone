@@ -8,7 +8,7 @@ $ python tracking_cyclone.py （NCARで登録したメールアドレス）　�
 
 また，当スクリプトはPython3を用いて実行しますが，標準モジュール以外に以下のモジュールを使用します。そのうち，pygribはWindows環境下でインストールすることができません。  
 macOSあるいはLinux環境下でインストールしてください。  
-numpy, pygrib
+numpy, pygrib, scipy
 
 当スクリプトは，  
 長谷健太郎・竹見哲也（2018）：日本域における春季の降水特定，日本気象学会2018年度春季大会  
