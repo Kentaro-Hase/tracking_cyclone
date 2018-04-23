@@ -2,7 +2,7 @@
 
 ## tracking_cyclone.py について
 当スクリプトは気象庁55年長期再解析（JRA-55）（Ebita et al. 2011; Kobayashi et al. 2015）の海面更正気圧データを用いて低気圧の抽出およびトラッキングを行います。  
-[NCAR]（https://rda.ucar.edu/） の登録およびJRA-55の使用許可が事前に必要となります。  
+[爆弾低気圧データベース](http://fujin.geo.kyushu-u.ac.jp/meteorol_bomb/algorithm/index.php)の登録およびJRA-55の使用許可が事前に必要となります。  
 当スクリプトを実行する際にはコマンドラインで以下のように入力して実行してください。  
 $ python tracking_cyclone.py （NCARで登録したメールアドレス）　（NCARで登録したパスワード）  
 
