@@ -14,4 +14,4 @@ numpy, pygrib, scipy
 長谷健太郎・竹見哲也（2018）：日本域における春季の降水特定，日本気象学会2018年度春季大会  
 で使用している低気圧の抽出・トラッキングの手法に基づいています。  
 その為，春季に限定した低気圧の抽出・トラッキングとなっております。  
-このアルゴリズムは[爆弾低気圧データベース](http://fujin.geo.kyushu-u.ac.jp/meteorol_bomb/algorithm/index.php)のアルゴリズムを参考に作成しました。  
+このアルゴリズムは[爆弾低気圧データベースのアルゴリズム](http://fujin.geo.kyushu-u.ac.jp/meteorol_bomb/algorithm/index.php)を参考に作成しました。  
