@@ -16,7 +16,9 @@ from urllib.parse import urlencode
 from urllib.request import build_opener, HTTPCookieProcessor
 from os import path, remove
 from datetime import datetime, timedelta
+from pygrib import open as pgo
 from scipy.stats import norm
+from copy import copy as cp
 import numpy as np
 
 # Cookie処理
