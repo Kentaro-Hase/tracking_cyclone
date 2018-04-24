@@ -137,8 +137,11 @@ while syear <= eyear:
             v['slp'][0][T, :, :] = slpd * 1.0e-02
 
             if sUTC == datetime(sUTC.year, 6, 1, 6):
+            v['slp'][0][T, :, :] = slpd * 1.0e-02
+
+            if sUTC == datetime(sUTC.year, 6, 1, 6):
                 if 'sd' in locals():
-                    sd = np.append(_sd, v, axis=0)
+                    sd = np.append(sd, v, axis=0)
                 else:
                     sd = np.copy(v)
                 del slpd, v
@@ -156,8 +159,8 @@ while syear <= eyear:
 
     if syear == eyear or syear % 10 == 0:
         sy = ((syear - 1) // 10 - 3) * 10 + 1 # 使用する気候値の最初の年
-        np.savez_compressed('{0:04d}-lcl90.npz'.format(sy), lcl_90=lcl90)   # 'yyyy-lcl90.npz'を作成し，['lcl90']にデータを格納
-        del sy, lcl90
+        np.savez_compressed('{0:04d}-lcl90.npz'.format(sy), lcl90=lcl_90)   # 'yyyy-lcl90.npz'を作成し，['lcl90']にデータを格納
+        del sy, lcl_90
     else:
         pass
     syear += int(1)
