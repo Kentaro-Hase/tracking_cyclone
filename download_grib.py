@@ -85,7 +85,7 @@ while syear <= eyear:
     else:
         print('Making lower confidence limit data...')
         sy = ((syear - 1) // 10 - 3) * 10 + 1
-        ey = sy + 1
+        ey = sy + 29
         sUTC = datetime(sy, 3, 1) - timedelta(hours=30)
         eUTC = datetime(ey, 6, 1, 6) 
         dt = timedelta(hours=6)
