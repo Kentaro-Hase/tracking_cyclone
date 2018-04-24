@@ -78,83 +78,81 @@ if path.exists("auth.rda.ucar.edu"):
 else:
     pass
 
-# 気候値データから基準値を作成する関数
-def cal_lcl90(year):
-    print('Making lower confidence limit data...')
-    _sy =  ((year - 1) // 10 - 3) * 10 + 1
-    _ey = _sy + 29
-    _sUTC = datetime(_sy, 3, 1) - timedelta(hours=30)
-    _eUTC = datetime(_ey, 6, 1, 6) 
-    _dt = timedelta(hours=6)
-
-    while _sUTC <= _eUTC:
-        print(_sUTC)
-        _y, _m = _sUTC.year, _sUTC.month
-        _dh = _sUTC - (datetime(_y, 3, 1) - timedelta(hours=30))
-        _t = int(_dh.total_seconds() / 21600)
-        if '_v' in locals():
-            pass
-        else:
-            _v = np.zeros(1, dtype=[('year', 'i2'),
-                                ('slp', 'f4', (375, 37, 45))])
-            _v['year'] = _y
-        
-        # Data load(Mean Sea Level Pressure[Pa])
-        if _y < 2014:
-            _grb = pgo("./anl_surf125.002_prmsl.{0:04d}010100_{0:04d}123118".format(_y))
-            _diff_h = _sUTC - datetime(_y, 1, 1)
-            _T = int(_diff_h.total_seconds() / 21600)
-        elif _m == 2:
-            if ((_y % 4 == 0) & (_y % 100 != 0)) | (_y % 400 == 0):
-                _grb = pgo("./anl_surf125.002_prmsl.{0:04d}020100_{0:04d}022918".format(_y))
-            else:
-                _grb = pgo("./anl_surf125.002_prmsl.{0:04d}020100_{0:04d}022818".format(_y))
-                _diff_h = _sUTC - datetime(_y, 2, 1)
-                _T = int(_diff_h.total_seconds() / 21600)
-        elif _m == 3:
-            _grb = pgo("./anl_surf125.002_prmsl.{0:04d}030100_{0:04d}033118".format(_y))
-            _diff_h = _sUTC - datetime(_y, 3, 1)
-            _T = int(_diff_h.total_seconds() / 21600)
-        elif _m == 4:
-            _grb = pgo("./anl_surf125.002_prmsl.{0:04d}040100_{0:04d}043018".format(_y))
-            _diff_h = _sUTC - datetime(_y, 4, 1)
-            _T = int(_diff_h.total_seconds() / 21600)
-        elif _m == 5:
-            _grb = pgo("./anl_surf125.002_prmsl.{0:04d}050100_{0:04d}053118".format(_y))
-            _diff_h = _sUTC - datetime(_y, 5, 1)
-            _T = int(_diff_h.total_seconds() / 21600)
-        elif _m == 6:
-            _grb = pgo("./anl_surf125.002_prmsl.{0:04d}060100_{0:04d}063018".format(_y))
-            _diff_h = _sUTC - datetime(_y, 6, 1)
-            _T = int(_diff_h.total_seconds() / 21600)
-
-        _d = _grb.select()[_T]
-        _slpd, _, _ = _d.data(lat1=15, lat2=60, lon1=110, lon2=165)
-        _v['slp'][0][_t, :, :] = _slpd * 1.0e-02
-
-        if _sUTC == datetime(_sUTC.year, 6, 1, 6):
-            if '_sd' in locals():
-                _sd = np.append(_sd, _v, axis=0)
-            else:
-                _sd = np.copy(_v)
-            del _slpd, _v
-            _sUTC = datetime(_sUTC.year + 1, 3, 1) - timedelta(hours=30)
-        else:
-            del _slpd
-            _sUTC += _dt
-    
-    _mean = np.mean(_sd['slp'], axis=0)
-    _std = np.std(_sd['slp'], axis=0)
-    _lcl_90 = norm.interval(alpha=0.90, loc=_mean, scale=_std)[0]
-    del _mean, _std
-    return _lcl_90
-
 # 基準値作成
 while syear <= eyear:
     if 'lcl90' in locals():
         pass
     else:
-        lcl90 = cal_lcl90(syear)
+        print('Making lower confidence limit data...')
+        sy = ((syear - 1) // 10 - 3) * 10 + 1
+        ey = sy + 1
+        sUTC = datetime(sy, 3, 1) - timedelta(hours=30)
+        eUTC = datetime(ey, 6, 1, 6) 
+        dt = timedelta(hours=6)
+        T = int(0)
+
+        while sUTC <= eUTC:
+            print(sUTC, 'T =', T)
+            y, m = sUTC.year, sUTC.month
+            dh = sUTC - (datetime(y, 3, 1) - timedelta(hours=30))
+            t = int(dh.total_seconds() / 21600)
+            if 'v' in locals():
+                pass
+            else:
+                v = np.zeros(1, dtype=[('year', 'i2'),
+                                    ('slp', 'f4', (375, 37, 45))])
+                v['year'] = y
+            
+            # Data load(Mean Sea Level Pressure[Pa])
+            if y < 2014:
+                grb = pgo("./anl_surf125.002_prmsl.{0:04d}010100_{0:04d}123118".format(y))
+                diff_h = sUTC - datetime(y, 1, 1)
+                t = int(diff_h.total_seconds() / 21600)
+            elif m == 2:
+                if ((y % 4 == 0) & (y % 100 != 0)) | (y % 400 == 0):
+                    grb = pgo("./anl_surf125.002_prmsl.{0:04d}020100_{0:04d}022918".format(y))
+                else:
+                    grb = pgo("./anl_surf125.002_prmsl.{0:04d}020100_{0:04d}022818".format(y))
+                    diff_h = sUTC - datetime(y, 2, 1)
+                    t = int(diff_h.total_seconds() / 21600)
+            elif m == 3:
+                grb = pgo("./anl_surf125.002_prmsl.{0:04d}030100_{0:04d}033118".format(y))
+                diff_h = sUTC - datetime(y, 3, 1)
+                t = int(diff_h.total_seconds() / 21600)
+            elif m == 4:
+                grb = pgo("./anl_surf125.002_prmsl.{0:04d}040100_{0:04d}043018".format(y))
+                diff_h = sUTC - datetime(y, 4, 1)
+                t = int(diff_h.total_seconds() / 21600)
+            elif m == 5:
+                grb = pgo("./anl_surf125.002_prmsl.{0:04d}050100_{0:04d}053118".format(y))
+                diff_h = sUTC - datetime(y, 5, 1)
+                t = int(diff_h.total_seconds() / 21600)
+            elif m == 6:
+                grb = pgo("./anl_surf125.002_prmsl.{0:04d}060100_{0:04d}063018".format(y))
+                diff_h = sUTC - datetime(y, 6, 1)
+                t = int(diff_h.total_seconds() / 21600)
+
+            d = grb.select()[t]
+            slpd, _, _ = d.data(lat1=15, lat2=60, lon1=110, lon2=165)
+            v['slp'][0][T, :, :] = slpd * 1.0e-02
+
+            if sUTC == datetime(sUTC.year, 6, 1, 6):
+                if 'sd' in locals():
+                    sd = np.append(_sd, v, axis=0)
+                else:
+                    sd = np.copy(v)
+                del slpd, v
+                T = int(0)
+                sUTC = datetime(sUTC.year + 1, 3, 1) - timedelta(hours=30)
+            else:
+                del slpd
+                T += int(1)
+                sUTC += dt
+        
+        mean = np.mean(sd['slp'], axis=0)
+        std = np.std(sd['slp'], axis=0)
+        lcl_90 = norm.interval(alpha=0.90, loc=mean, scale=std)[0]
+        del mean, std
 
     if syear == eyear or syear % 10 == 0:
         sy = ((syear - 1) // 10 - 3) * 10 + 1 # 使用する気候値の最初の年
@@ -162,4 +160,4 @@ while syear <= eyear:
         del sy, lcl90
     else:
         pass
-    sy += int(1)
+    syear += int(1)
