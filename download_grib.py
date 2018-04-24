@@ -70,7 +70,7 @@ while sy <= ey:
 
 time = cp(syear)
 while time <= eyear:
-    grib_download(time) # 抽出したい年のファイルをダウンロード
+    grib_download(time.year) # 抽出したい年のファイルをダウンロード
     time += int(1)
 
 if path.exists("auth.rda.ucar.edu"):
