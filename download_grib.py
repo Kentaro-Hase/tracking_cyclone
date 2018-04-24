@@ -59,7 +59,7 @@ def grib_download(year):
 
 # Download
 sy = ((syear - 1) // 10 - 3) * 10 + 1    # 使用する気候値の最初の年
-if eyear % 10:
+if eyear % 10 == 0:
     ey = (eyear // 10 - 1) * 10    # 使用する気候値の最後の年
 else:
     ey = (eyear // 10) * 10        # 使用する気候値の最後の年
@@ -70,7 +70,7 @@ while sy <= ey:
 
 time = cp(syear)
 while time <= eyear:
-    grib_download(time.year) # 抽出したい年のファイルをダウンロード
+    grib_download(time) # 抽出したい年のファイルをダウンロード
     time += int(1)
 
 if path.exists("auth.rda.ucar.edu"):
