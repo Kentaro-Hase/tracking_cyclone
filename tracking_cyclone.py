@@ -469,13 +469,13 @@ df = DataFrame({'経度(deg)' : c['lon'],
                 '海面更正気圧(hPa)' : c['slp'],
                 '日本時刻' : c['JST'],
                 '低気圧発生からの時間(h)' : c['life'],
-                '気圧変動量(hPa/h)' : c['dslp'],
+                '気圧変動量(hPa/6h)' : c['dslp'],
                 '低気圧の移動速度(km/h)' : c['v'],
                 '低気圧番号' : c['num'],
                 '低気圧の寿命(h)' : c['max_life']})
 df = df[df['低気圧の寿命(h)'] >= 24]    # 24時間以上持続したものを低気圧として抽出
-df_save = df.ix[:, ['低気圧番号', '日本時刻', '経度(deg)', '緯度(deg)', '海面更正気圧(hPa)', '低気圧発生からの時間(h)', '気圧変動量(hPa/h)', '低気圧の移動速度(km/h)', '低気圧の寿命(h)']]   # 行のソート
-df_save = df_save.sort_values(by=['低気圧番号'])  # 列のソート
+df_save = df.ix[:, ['低気圧番号', '日本時刻', '経度(deg)', '緯度(deg)', '海面更正気圧(hPa)', '低気圧発生からの時間(h)', '気圧変動量(hPa/6h)', '低気圧の移動速度(km/h)', '低気圧の寿命(h)']]   # 行のソート
+df_save = df_save.sort_values(by=['低気圧番号', '日本時刻'])  # 列のソート
 df_save = df_save.set_index('低気圧番号')
 df_save.to_csv('./tracking-cyclone.csv')
 print("Finish making ./tracking-cyclone.csv")
