@@ -63,9 +63,14 @@ numpy, pygrib
 
 $ python track-draw.py  
 
-また，当スクリプトはPython3を用いて実行しますが，標準モジュール以外に以下のモジュールを使用します。
+また，当スクリプトはPython3を用いて実行しますが，標準モジュール以外に以下のモジュールを使用します。  
 numpy, pandas, matplotlib, basemap
 
 入力として，スクリプトのsyear（開始年）とeyear（終了年）をdownload-grib.pyに合わせて適宜変更してください。  
 適応する期間は1991年以降となります。 
 また，出力ファイルとして，'tracking-cyclone.csv'，trackディレクトリに格納される画像ファイルを作成します。
+
+## test ディレクトリについて
+当ディレクトリはNCARの登録およびJRA-55の使用許可を試験的に'tracking-cyclone.csv'，trackディレクトリに格納される画像ファイルを作成する為のディレクトリです。  
+詳細は当ディレクトリ内の[README](./test/README.md)に記載致しました。  
+JRA-55の海面更正気圧データのダウンロードや低気圧の抽出およびトラッキングを行いたい方は[NCAR](https://rda.ucar.edu/)の登録およびJRA-55の使用許可を行うようにして下さい。
