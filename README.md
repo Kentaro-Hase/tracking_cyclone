@@ -23,6 +23,9 @@ numpy, pygrib, scipy, pandas, matplotlib, basemap
 適応する期間は1991年以降となります。  
 出力ファイルはNCARからダウンロードしたGRIBファイル，'tracking-cyclone.csv'，trackディレクトリに格納される画像ファイルです。　　
 
+使用フォントとしまして，Times New Romanを当スクリプトでは設定しています。
+Times New Romanを使用できない環境の場合，UserWarningが出力され，デフォルトのフォントが使用されますが，フォントの変更以外は問題ありません。
+
 ## download-grib.py について
 当スクリプトはtracking_cyclone.pyの中で，ダウンロードと低気圧判別に用いる基準値作成のみを行います。  
 [NCAR](https://rda.ucar.edu/)の登録およびJRA-55の使用許可が事前に必要となります。  
@@ -72,7 +75,10 @@ numpy, pandas, matplotlib, basemap
 
 入力として，スクリプトのsyear（開始年）とeyear（終了年）をdownload-grib.pyに合わせて適宜変更してください。  
 適応する期間は1991年以降となります。 
-また，出力ファイルとして，'tracking-cyclone.csv'，trackディレクトリに格納される画像ファイルを作成します。
+また，出力ファイルとして，'tracking-cyclone.csv'，trackディレクトリに格納される画像ファイルを作成します。  
+
+使用フォントとしまして，Times New Romanを当スクリプトでは設定しています。
+Times New Romanを使用できない環境の場合，UserWarningが出力され，デフォルトのフォントが使用されますが，フォントの変更以外は問題ありません。
 
 ## test ディレクトリについて
 当ディレクトリはNCARの登録およびJRA-55の使用許可を試験的に'tracking-cyclone.csv'，trackディレクトリに格納される画像ファイルを作成する為のディレクトリです。  
