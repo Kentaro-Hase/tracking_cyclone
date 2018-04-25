@@ -8,3 +8,6 @@ $ python track-draw.py
 また，当スクリプトはPython3を用いて実行しますが，標準モジュール以外に以下のモジュールを使用します。  
 
 numpy, pandas, matplotlib, basemap
+
+画像ファイル作成時に使用フォントとしまして，Times New Romanを当スクリプトでは設定しています。  
+Times New Romanを使用できない環境の場合，UserWarningが出力され，デフォルトのフォントが使用されますが，フォントの変更以外は問題ありません。
