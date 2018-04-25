@@ -23,7 +23,7 @@ numpy, pygrib, scipy, pandas, matplotlib, basemap
 適応する期間は1991年以降となります。  
 出力ファイルはNCARからダウンロードしたGRIBファイル，'tracking-cyclone.csv'，trackディレクトリに格納される画像ファイルです。　　
 
-使用フォントとしまして，Times New Romanを当スクリプトでは設定しています。
+画像ファイル作成時に使用フォントとしまして，Times New Romanを当スクリプトでは設定しています。
 Times New Romanを使用できない環境の場合，UserWarningが出力され，デフォルトのフォントが使用されますが，フォントの変更以外は問題ありません。
 
 ## download-grib.py について
@@ -77,7 +77,7 @@ numpy, pandas, matplotlib, basemap
 適応する期間は1991年以降となります。 
 また，出力ファイルとして，'tracking-cyclone.csv'，trackディレクトリに格納される画像ファイルを作成します。  
 
-使用フォントとしまして，Times New Romanを当スクリプトでは設定しています。
+画像ファイル作成時に使用フォントとしまして，Times New Romanを当スクリプトでは設定しています。
 Times New Romanを使用できない環境の場合，UserWarningが出力され，デフォルトのフォントが使用されますが，フォントの変更以外は問題ありません。
 
 ## test ディレクトリについて
