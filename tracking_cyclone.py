@@ -486,7 +486,7 @@ nlon, nlat = 29, 29
 lon = np.linspace(slon, elon, nlon)
 lat = np.linspace(slat, elat, nlat)
 
-mp = Basemap(projection='cyl', llcrnrlon=slon, urcrnrlon=elon, llcrnrlat=slat, urcrnrlat=elat, resolution='i')
+mp = Basemap(projection='cyl', llcrnrlon=slon, urcrnrlon=elon, llcrnrlat=slat, urcrnrlat=elat, resolution='l')
 X, Y = np.meshgrid(lon, lat)
 x, y = mp(X, Y)
 xlon, ylat = x[0, :], y[:, 0]
