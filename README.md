@@ -5,6 +5,7 @@
 当スクリプトは気象庁55年長期再解析（JRA-55）（Ebita et al. 2011; Kobayashi et al. 2015）の海面更正気圧データを用いて低気圧の抽出およびトラッキングを行います。  
 [NCAR](https://rda.ucar.edu/)の登録およびJRA-55の使用許可が事前に必要となります。  
 当スクリプトを実行する際にはコマンドラインで以下のように入力して実行してください。  
+
 $ python tracking_cyclone.py （NCARで登録したメールアドレス）　（NCARで登録したパスワード）  
 
 また，当スクリプトはPython3を用いて実行しますが，標準モジュール以外に以下のモジュールを使用します。そのうち，pygribはWindows環境下でインストールすることができません。  
@@ -25,6 +26,7 @@ numpy, pygrib, scipy, pandas, matplotlib, basemap
 当スクリプトはtracking_cyclone.pyの中で，ダウンロードと低気圧判別に用いる基準値作成のみを行います。  
 [NCAR](https://rda.ucar.edu/)の登録およびJRA-55の使用許可が事前に必要となります。  
 当スクリプトを実行する際にはコマンドラインで以下のように入力して実行してください。  
+
 $ python download-grib.py （NCARで登録したメールアドレス）　（NCARで登録したパスワード）  
 
 また，当スクリプトはPython3を用いて実行しますが，標準モジュール以外に以下のモジュールを使用します。そのうち，pygribはWindows環境下でインストールすることができません。  
@@ -41,6 +43,7 @@ numpy, pygrib, scipy
 抽出したい年のGRIBファイルと，基準値作成の為のGRIBファイルまたは'yyyy-lcl90.npz'がスクリプトを実行するディレクトリに必要となります。
 事前にdownload-grib.pyを実行してください。  
 当スクリプトを実行する際にはコマンドラインで以下のように入力して実行してください。  
+
 $ python identification-cyclone.py  
 
 また，当スクリプトはPython3を用いて実行しますが，標準モジュール以外に以下のモジュールを使用します。そのうち，pygribはWindows環境下でインストールすることができません。  
@@ -57,6 +60,7 @@ numpy, pygrib
 'cyclone.npz'が必要となります。
 事前にidentification-cyclone.pyを実行してください。
 当スクリプトを実行する際にはコマンドラインで以下のように入力して実行してください。  
+
 $ python track-draw.py  
 
 また，当スクリプトはPython3を用いて実行しますが，標準モジュール以外に以下のモジュールを使用します。
