@@ -8,7 +8,7 @@ syear = 2006
 eyear = 2017
 
 # Libraries
-from sys import argv, stdout
+from sys import argv, stdout, exit
 from http.cookiejar import MozillaCookieJar
 from urllib.parse import urlencode
 from urllib.request import build_opener, HTTPCookieProcessor
@@ -201,7 +201,7 @@ while time <= endt:
             lcl90[:, 4:-4, 8:-8] = np.load(f)['lcl90']  # 緯度方向に南北5度ずつ，経度方向に東西10度ずつ広くとる
         else:
             print('{0:04d}-lcl90.npzが作成できていません。'.format(sy))
-            sys.exit()  # スクリプトの終了
+            exit()  # スクリプトの終了
     lcl = lcl90[t].reshape(-1)
     
     # Data Load
