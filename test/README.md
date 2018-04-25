@@ -4,3 +4,6 @@
 次のコマンドラインを本ディレクトリで実行して頂くことで'cyclone.csv'とtrackディレクトリ下にできる画像ファイルを作成することができます。
 
 $ python track-draw.py
+
+また，当スクリプトはPython3を用いて実行しますが，標準モジュール以外に以下のモジュールを使用します。  
+numpy, pandas, matplotlib, basemap
