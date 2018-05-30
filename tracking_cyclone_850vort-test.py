@@ -6,7 +6,7 @@
 2018/05/08 Kentaro Hase 不具合を修正し更新
 2018/05/09 Kentaro Hase 標準偏差を標本標準偏差から母標準偏差に変更（気候値を母集団とみるため）
 2018/05/29 Kentaro Hase 寒冷低気圧など，海面更正気圧では明瞭に表れない低気圧を抽出するために，850hPaの相対渦度を低気圧抽出基準に追加
-2018/05/30 Kentaro Hase 基準値算出の際の不具合を修正し更新
+2018/05/30 Kentaro Hase 基準値算出の際の不具合を修正し更新(5/31に追加修正)
 '''
 # トラッキングを行う開始年・終了年
 syear = 2006
@@ -249,7 +249,7 @@ while syear <= eyear:
       
         vor_mean = vor_sum / vor_size   # 平均
         vor_std = ((vor_sum2 - vor_sum * vor_mean) / vor_size) ** 0.5  # 標準偏差
-        vor_90 = norm.interval(alpha=0.90, loc=vor_mean, scale=vor_std)[0]
+        vor_90 = norm.interval(alpha=0.90, loc=vor_mean, scale=vor_std)[1]
         del vor_mean, vor_std
 
     if syear == eyear or syear % 10 == 0:
